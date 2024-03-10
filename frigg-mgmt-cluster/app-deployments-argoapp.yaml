@@ -1,0 +1,18 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-deployments-argoapp
+  namespace: argocd
+spec:
+  destination:
+    name: in-cluster
+  project: default
+  source:
+    repoURL: PLACEHOLDER
+    targetRevision: main
+    path: app-deployments
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

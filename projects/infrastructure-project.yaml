@@ -1,0 +1,24 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: infrastructure
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  description: infrastructure Clusters & Apps
+  destinations:
+  - namespace: '*'
+    name: '*'
+    server: '*'
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  sourceRepos:
+  - PLACEHOLDER
+  - git@github.com:GITHUB_USERNAME/friggs-mgmt-repo-mgmtcluster.git
+  - https://traefik.github.io/charts
+  - https://prometheus-community.github.io/helm-charts
+  - git@github.com:GITHUB_USERNAME/friggs-workloadclusters.git
