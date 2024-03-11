@@ -98,7 +98,7 @@ export encRepourl="$(echo "$repourl" | tr -d '\n' | base64)"
 # Create Remote's Repositories for ArgoCD Usage on Github
 gh auth login
 
-gh repo create GITHUB_USERNAME/"${cluster_base}" --private --template=PatrickLaabs/frigg-workload-repo-template
+gh repo create GITHUB_USERNAME/"${cluster_base}" --private --template=PatrickLaabs/friggs-workload-repo-template
 sleep 10
 
 #gh api \
@@ -119,7 +119,6 @@ find ./app-deployments -type f -name '*.yaml' -exec sed -i "s#cluster = \"<CLUST
 
 find ./applicationsets-deployments -type f -name '*.yaml' -exec sed -i "s#repoURL: <REPLACE-REPO-URL>#repoURL: ${repourl}#" {} +
 find ./applicationsets-deployments -type f -name '*.yaml' -exec sed -i "s#cluster = \"<CLUSTER-NAME>\"#cluster = \"${cluster_base}\"#" {} +
-# find ./infrastructure-apps -type f -name '*.yaml' -exec sed -i "s#<REPLACE-TRAEFIK-EXTERNAL-IP>#${clusterExternalIP}#" {} +
 
 find ./basement-deployments -type f -name '*.yaml' -exec sed -i "s#repoURL: <REPLACE-REPO-URL>#repoURL: ${repourl}#" {} +
 find ./basement-deployments -type f -name '*.yaml' -exec sed -i "s#cluster = \"<CLUSTER-NAME>\"#cluster = \"${cluster_base}\"#" {} +
