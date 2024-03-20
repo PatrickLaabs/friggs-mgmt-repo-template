@@ -98,7 +98,8 @@ export encRepourl="$(echo "$repourl" | tr -d '\n' | base64)"
 # Create Remote's Repositories for ArgoCD Usage on Github
 gh auth login
 
-gh repo create GITHUB_USERNAME/"${cluster_base}" --private --template=PatrickLaabs/friggs-workload-repo-template
+#gh repo create GITHUB_USERNAME/"${cluster_base}" --private --template=PatrickLaabs/friggs-workload-repo-template
+gh repo create GITHUB_USERNAME/"${cluster_base}" --private --template=GITOPS_TEMPLATE_REPO
 sleep 10
 
 #gh api \
